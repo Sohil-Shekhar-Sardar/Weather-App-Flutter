@@ -227,6 +227,7 @@ class HomeScreenState extends State<HomeScreen> {
           GestureDetector(
             onTap: () async {
               await FirebaseAuth.instance.signOut();
+              SystemNavigator.pop();
             },
             child: const Padding(
               padding: EdgeInsets.only(right: 15.0),
