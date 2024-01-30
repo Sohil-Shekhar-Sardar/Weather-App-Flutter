@@ -22,7 +22,7 @@ class _CartScreenState extends State<CartScreen> {
       ),
       body: dogAppController.cartDogList.isEmpty ?
           Center(
-            child: Text("Please add dogs",style: TextHelper.size14.copyWith(color: ColorsForApp.primaryColor),),
+            child: Text("Data not found !",style: TextHelper.size14.copyWith(color: ColorsForApp.primaryColor),),
           )
           : ListView.builder(itemCount: dogAppController.cartDogList.length,
           shrinkWrap: true,
@@ -35,7 +35,7 @@ class _CartScreenState extends State<CartScreen> {
                   child: Card(
                     elevation: 4,
                     child: ListTile(
-                      title:  Text(dogAppController.cartDogList[index],style: TextHelper.size20.copyWith(color: ColorsForApp.primaryColor),),
+                      title: Image.network(dogAppController.cartDogList[index]),
                     trailing: GestureDetector(
                       onTap: (){
                         setState(() {

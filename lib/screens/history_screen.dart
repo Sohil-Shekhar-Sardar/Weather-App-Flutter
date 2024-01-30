@@ -22,18 +22,20 @@ class HistoryScreenState extends State<HistoryScreen> {
         backgroundColor: ColorsForApp.primaryColor,
         title: const Text('Dog History'),
       ),
-      body: dogAppController.dogHistoryList.isNotEmpty?
-          const Center(
-            child: Text("Data not found"),
-          ):
-      ListView.builder(
-          itemBuilder: (context,index){
-            return Card(
-              child: ListTile(
-                leading: Image.network(dogAppController.dogHistoryList[index]),
-              ),
-            );
-          }
+      body: Obx(()=>
+        dogAppController.dogHistoryList.isNotEmpty?
+            const Center(
+              child: Text("Data not found"),
+            ):
+            ListView.builder(
+            itemBuilder: (context,index){
+              return Card(
+                child: ListTile(
+                  leading: Image.network(dogAppController.dogHistoryList[index]),
+                ),
+              );
+            }
+        ),
       )
     );
   }

@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:practice_project_flutter/controllers/dog_app_controller.dart';
+import 'package:practice_project_flutter/utils/app_colors.dart';
+import 'package:practice_project_flutter/widgets/button.dart';
+import 'package:practice_project_flutter/widgets/constant_widgets.dart';
+import 'package:sizer/sizer.dart';
 import '../controllers/network_controller.dart';
+import '../routes/routes.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -33,29 +38,53 @@ class HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dog App - Home'),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              dogAppController.imageUrl.isNotEmpty
-                  ? Image.network(dogAppController.imageUrl.value)
-                  : const CircularProgressIndicator(),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () async{
-                 await dogAppController.fetchRandomDogImage();
-                },
-                child: const Text('Fetch New Image'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  dogAppController.cartDogList.add(dogAppController.imageUrl.value);
-                },
-                child: const Text('Add to Cart'),
-              ),
-            ],
+          child: Obx(()=>
+             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                dogAppController.imageUrl.isNotEmpty
+                    ? Container(
+                        height: 50.h,
+                        width: 70.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(color: Colors.black,width: 2),
+                          image: DecorationImage(image:NetworkImage(dogAppController.imageUrl.value),fit: BoxFit.fill)
+                        ),
+                )
+                    : const CircularProgressIndicator(),
+                const SizedBox(height: 20),
+                CommonButton(
+                  onPressed: ()async {
+                   await dogAppController.fetchRandomDogImage();
+                  },
+                  label: 'Fetch New Image',
+                ),
+                const SizedBox(height: 10,),
+                CommonButton(
+                  onPressed: () {
+                    if(dogAppController.imageUrl.value.isEmpty){
+                      errorSnackBar(message: "Please fetch image");
+                    }else {
+                      dogAppController.cartDogList.add(dogAppController.imageUrl.value);
+                      successSnackBar(message: "Successfully add to cart");
+                    }
+                  },
+                  label: 'Add to Cart',
+                ),
+                const SizedBox(height: 10,),
+                CommonButton(
+                  onPressed: () {
+                    Get.toNamed(Routes.HISTORY_SCREEN);
+                  },
+                  label: 'Show History',
+                ),
+              ],
+            ),
           ),
         ),
       ),

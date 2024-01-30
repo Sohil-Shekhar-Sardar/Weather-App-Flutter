@@ -1,9 +1,7 @@
 import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:practice_project_flutter/widgets/constant_widgets.dart';
-
 import '../utils/string_constants.dart';
 
 class DogAppController extends GetxController {
@@ -28,4 +26,5 @@ class DogAppController extends GetxController {
       errorSnackBar(message: e.toString());
     }
   }
+
 }

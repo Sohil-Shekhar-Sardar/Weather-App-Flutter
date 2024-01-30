@@ -37,3 +37,41 @@ errorSnackBar({String title = 'Failure', String? message}) {
     ),
   );
 }
+
+// Snack bar for showing success message
+successSnackBar({String title = 'Success', String? message}) {
+  Get.log('\x1B[92m[$title] => $message\x1B[0m');
+  return Get.showSnackbar(
+    GetSnackBar(
+      titleText: Text(
+        title,
+        textAlign: TextAlign.left,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 15,
+          height: 1.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      messageText: Text(
+        message!,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 12,
+          height: 1.0,
+          fontWeight: FontWeight.w700,
+        ),
+        textAlign: TextAlign.left,
+      ),
+      isDismissible: true,
+      snackPosition: SnackPosition.TOP,
+      margin: const EdgeInsets.all(20),
+      backgroundColor: Colors.green.withOpacity(0.80),
+      icon: const Icon(Icons.task_alt_outlined, size: 30.0, color: Colors.white),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+      borderRadius: 8,
+      duration: const Duration(seconds: 2),
+      animationDuration: const Duration(milliseconds: 700),
+    ),
+  );
+}
