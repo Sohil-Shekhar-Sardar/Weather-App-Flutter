@@ -3,11 +3,6 @@ class Assets {
   Assets._();
 
   static const String animationsNoInternetConnection = 'assets/animations/noInternetConnection.json';
-  static const String imagesCloudy = 'assets/images/cloudy.png';
-  static const String imagesFewclouds = 'assets/images/fewclouds.png';
-  static const String imagesOvercastCloud = 'assets/images/overcast_cloud.png';
-  static const String imagesScatteredCloud = 'assets/images/scattered_cloud.png';
-  static const String imagesSun = 'assets/images/sun.png';
-  static const String imagesWeatherApp = 'assets/images/weather-app.png';
+  static const String imagesPuppy = 'assets/images/puppy.jpg';
 
 }

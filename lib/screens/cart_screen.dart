@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:practice_project_flutter/controllers/weather_app_controller.dart';
+import 'package:practice_project_flutter/controllers/dog_app_controller.dart';
 import 'package:practice_project_flutter/utils/app_colors.dart';
 import 'package:practice_project_flutter/utils/text_styles.dart';
 
-class FavCityList extends StatefulWidget {
-  const FavCityList({super.key});
+class CartScreen extends StatefulWidget {
+  const CartScreen({super.key});
 
   @override
-  State<FavCityList> createState() => _FavCityListState();
+  State<CartScreen> createState() => _CartScreenState();
 }
 
-class _FavCityListState extends State<FavCityList> {
+class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
-    WeatherAppController weatherAppController = Get.find();
+    DogAppController dogAppController = Get.find();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Favourite Cities"),
+        title: const Text("Cart"),
         backgroundColor: ColorsForApp.primaryColor,
       ),
-      body: weatherAppController.cityList.isEmpty ?
+      body: dogAppController.cartDogList.isEmpty ?
           Center(
-            child: Text("Please add cities",style: TextHelper.size14.copyWith(color: ColorsForApp.primaryColor),),
+            child: Text("Please add dogs",style: TextHelper.size14.copyWith(color: ColorsForApp.primaryColor),),
           )
-          : ListView.builder(itemCount: weatherAppController.cityList.length,
+          : ListView.builder(itemCount: dogAppController.cartDogList.length,
           shrinkWrap: true,
           itemBuilder: (context,index){
             return Obx(()=>
@@ -35,11 +35,11 @@ class _FavCityListState extends State<FavCityList> {
                   child: Card(
                     elevation: 4,
                     child: ListTile(
-                      title:  Text(weatherAppController.cityList[index],style: TextHelper.size20.copyWith(color: ColorsForApp.primaryColor),),
+                      title:  Text(dogAppController.cartDogList[index],style: TextHelper.size20.copyWith(color: ColorsForApp.primaryColor),),
                     trailing: GestureDetector(
                       onTap: (){
                         setState(() {
-                          weatherAppController.cityList.removeAt(index);
+                          dogAppController.cartDogList.removeAt(index);
                         });
                       },
                         child: const Icon(Icons.delete,color: Colors.red,size: 20,)),

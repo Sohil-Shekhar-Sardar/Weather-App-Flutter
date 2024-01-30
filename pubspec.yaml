@@ -12,18 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-  cupertino_icons: ^1.0.2
+  http: ^0.13.3
   get: ^4.6.5
-  weather: ^3.1.1
-  geolocator: ^10.1.0
   lottie:
   flutter_native_splash:
   sizer: ^2.0.15
-  firebase_core: ^2.24.2
-  firebase_auth: ^4.16.0
   connectivity_plus: ^5.0.2
-  intl: ^0.19.0
+
 
 dev_dependencies:
   flutter_test:
@@ -56,4 +51,4 @@ flutter:
 
 flutter_native_splash:
   color: "#24142c"
-  image: "assets/images/weather-app.png"
+  image: "assets/images/puppy.jpg"
